@@ -9,16 +9,16 @@ js中有六种数据类型，包括五种 **基本数据类型** （Number,Strin
 	NaN:非数字类型。特点：① 涉及到的 任何关于NaN的操作，都会返回NaN   ② NaN不等于自身。
 
 	isNaN() 函数用于检查其参数是否是非数字值。
-
-	```
+	
 	isNaN(123)  //false   isNaN("hello")  //true
-	```
 
 2.String类型
 
 	字符串有length属性。
 
-	字符串转换：转型函数String(),适用于任何数据类型（null,undefined 转换后为null和undefined）；toString()方法（null,defined没有toString()方法）。
+	字符串转换：转型函数String(),适用于任何数据类型（null,undefined 转换后为null和undefined）；
+		
+			  toString()方法（null,defined没有toString()方法）。
 
 3.Boolean类型
 
@@ -38,7 +38,9 @@ js中有六种数据类型，包括五种 **基本数据类型** （Number,Strin
 
 	js中对象是一组属性与方法的集合。
 	
-	这里就要说到引用类型了，引用类型是一种数据结构，用于将数据和功能组织在一起。引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。
+	这里就要说到引用类型了，引用类型是一种数据结构，用于将数据和功能组织在一起。
+	
+	引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。
 	
 ### typeof 与 instanceof 的区别
 
@@ -46,3 +48,106 @@ js中有六种数据类型，包括五种 **基本数据类型** （Number,Strin
 	
 	instanceof 用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。
 	
+### Ajax 运行机制
+
+	在页面不刷新的情况下，向浏览器发送请求，达到页面和后台的异步交互。
+	
+	1. 创建 XMLHttpRequest 对象 ( Ajax核心对象 )
+	
+```
+	var xml;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xml=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xml=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+```
+		
+	2. 向服务器发送请求
+
+	* GET请求
+	
+```
+	xml.open("GET",url,true);
+	xml.send();
+```
+	
+	* POST请求
+	
+```
+	xml.open("POST",url,true);
+	xml.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xml.send("fname="+Henry+"&lname="+Ford);
+```
+	
+	3. 服务器响应
+
+```
+	xml.onreadystatechange = function(){
+		if (xml.readyState === 4 && xml.status === 200){
+			//xml.responseText 获得的数据
+		}
+	}
+```
+
+### xml.readyState 状态值
+
+	0: 请求未初始化
+	
+	1: 服务器连接已建立
+	
+	2: 请求已接收
+	
+	3: 请求处理中
+	
+	4: 请求已完成，且响应已就绪
+	
+### xml.status 状态码
+
+	1**： 请求收到，继续处理
+	
+	2**： 操作成功收到，分析、接受
+	
+	3**： 完成此请求必须进一步处理
+	
+	4**： 请求包含一个错误语法或不能完成
+	
+	5**： 服务器执行一个完全有效请求失败
+	
+### 两列布局
+
+css
+
+```
+.div{
+	display: flex;
+	max-width: 500px;
+	height: 300px;
+	border: 1px solid #666;
+}
+.div div{
+	height: 100%;
+}
+.adiv{
+	flex: 0 1 100px;
+	background: #42B983;
+}
+.bdiv{
+	flex: 0 1 100%;
+	background: #2586F3;
+}
+```
+
+html
+
+```
+<div class="div">
+  <div class="adiv"></div>
+  <div class="bdiv"></div>
+</div>
+```
