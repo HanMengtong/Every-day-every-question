@@ -18,3 +18,14 @@
 
 9. 两列布局
 
+## 2019-7-31 更新内容
+
+1. tabBar
+
+2. wx:for、wx:key、wx:if
+
+3. movable-area、movable-view、cover-view、cover-image、scroll-view、swiper、swiper-item、view
+
+## 2019-8-1 更新内容
+
+1. jsonp原理

@@ -119,6 +119,12 @@ js中有六种数据类型，包括五种 **基本数据类型** （Number,Strin
 	
 	5**： 服务器执行一个完全有效请求失败
 	
+### jsonp 原理
+
+JSONP 全称是 JSON with Padding ，是基于 JSON 格式的为解决跨域请求资源而产生的解决方案。
+
+他实现的基本原理是利用了 HTML 里 <script></script> 元素标签，远程调用 JSON 文件来实现数据传递。
+
 ### 两列布局
 
 css
