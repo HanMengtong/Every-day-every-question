@@ -157,3 +157,60 @@ html
   <div class="bdiv"></div>
 </div>
 ```
+
+### 实现水平垂直居中的方法
+
+1. 已知宽高
+
+```
+.div{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -(height/2)px 0 0 -(width/2)px;
+}
+```
+
+2. 未知宽高
+
+```
+.div{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% -50%);
+}
+```
+
+3. 未知宽高
+
+```
+父级
+.parent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+```
+
+### bind、apply、call的区别
+
+相似点： 都可以改变 this 的指向
+
+不同点： bind 返回的是函数，后续需要进行调用
+
+        apply、call 对函数进行直接调用
+		
+		call 后面传参与函数中的方法一一对应
+		
+		apply 的第二参数是个数组，数组中的元素与方法一一对应
+		
+### var、let、const 的区别
+
+1. var、let 声明变量，const 声明常量
+
+2. var 声明变量存在变量提升 
+
+3. let、const 声明形成块作用域
+
+4. 同一作用域下 let、const 不能重复声明，而 var 可以
