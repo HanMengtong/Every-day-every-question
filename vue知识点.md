@@ -104,3 +104,54 @@
 父传子：子组件通过 props 获取数据
 
 子传父：子组件通过 $emit 传递数据
+
+### 路由的钩子函数
+
+1. 全局钩子函数
+
+```
+Vue.beforeEach(function(to,form,next){})  /*在跳转之前执行*/
+Vue.afterEach(function(to,form){}) /*在跳转之后判断*/
+```
+
+全局钩子函数在入口文件main.js中定义
+
+```
+router.beforeEach((to, from, next) => {
+    let token = router.app.$storage.fetch("token");
+    let needAuth = to.matched.some(item => item.meta.login);
+    if(!token && needAuth) return next({path: "/login"});
+    next();
+});
+//判断是否有token,如果有，则说明保持着登录状态，如果没有，则要重新登录
+```
+
+to:router即将进入的路由对象
+
+from:当前导航即将离开的路由
+
+next:Function,进行管道中的一个钩子，如果执行完了，则导航的状态就是 confirmed （确认的）；否则为false，终止导航。
+
+afterEach函数不用传next()函数。
+
+2. 单个路由里面的钩子
+
+主要用于写某个指定路由跳转时需要执行的逻辑.
+
+```
+{
+	path: '/news',
+	component: resolve => require(['../components/page/news.vue'], resolve),
+	meta: { title: '新闻' }
+},
+
+```
+
+3. 组件路由
+
+主要包括 beforeRouteEnter(to, from, next){} 和 beforeRouteUpdate(to, from, next){} , beforeRouteLeave(to, from, next){}
+
+
+
+
+

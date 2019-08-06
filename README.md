@@ -45,3 +45,11 @@
 6. bind、apply、call的区别
 
 7. var、let、const 的区别
+
+## 2019-8-6 更新内容
+
+1. 深拷贝
+
+2. rem原理
+
+3. vue 路由钩子函数
