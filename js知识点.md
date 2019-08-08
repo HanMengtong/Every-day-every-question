@@ -289,4 +289,18 @@ end : 从何处结束选取( 可选 )，不包括该元素。
 this.news = this.newsData.slice(0,4);   //选取前4个数据
 ```
 
+### 水仙花数
 
+```
+let arr = [];
+for (let i = 100; i < 999; i++) {
+   let numArr = i.toString().split("");  //分割
+   let n1 = Math.pow(numArr[0],3)  //第一位的立方
+   let n2 = Math.pow(numArr[1],3)  //第二位的立方
+   let n3 = Math.pow(numArr[2],3)  //第三位的立方
+   if (i == n1 + n2 + n3) {  //符合条件的添加到新的数组中
+       arr.push(i)
+   }
+}
+console.log(arr)
+```
